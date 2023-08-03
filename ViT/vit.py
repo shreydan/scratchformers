@@ -126,14 +126,8 @@ class ViT(nn.Module):
             nn.Linear(self.config.patch_dim, self.config.embed_dim, bias=False),
             nn.LayerNorm(self.config.embed_dim)
         )
-        self.pos_embedding = nn.Sequential(
-            nn.Linear(
-                self.config.embed_dim,
-                self.config.embed_dim,
-                bias=False
-            ),
-            nn.Dropout(self.config.pos_dropout)
-        )
+        self.pos_embed = nn.Parameter(torch.randn(1,self.config.num_patches,self.config.embed_dim),requires_grad=True)
+        self.pos_dropout = nn.Dropout(self.config.pos_dropout)
         
         self.transformer_blocks = nn.ModuleList([TransformerBlock(config) for _ in range(self.config.depth)])
         
@@ -148,7 +142,7 @@ class ViT(nn.Module):
                       p2=self.config.patch_size
                      )
         x = self.patch_embedding(x) # batch x seq_len x embed_dim
-        x += self.pos_embedding(x) # batch x seq_len x embed_dim
+        x += self.pos_embed  # batch x seq_len x embed_dim
         
         for block in self.transformer_blocks:
             x = block(x) # batch x seq_len x embed_dim
