@@ -35,21 +35,26 @@ class MultiHeadAttention(nn.Module):
         
         
     def forward(self, x):
-        # q,k,v shape individually: batch_size x seq_len x embed_dim
-        # we know that qk_t = q x k_t, where q=bxtxhead_dim, k_t=bxhead_timxt
+        # q,k,v shape individually (1 head): batch_size x seq_len x embed_dim
+        # qkv: batch_size x seq_len x embed_dim*3
+        # q,k,v are chunked into 3 equal parts: batch_size x seq_len x embed_dim 
         q,k,v = self.qkv(x).chunk(3,dim=-1)
+        # embed_dim = head_size x n_heads
+        # q,k,v for n_heads: batch_size x num_heads x seq_len x head_size
         q = rearrange(q,'b t (h n) -> b n t h',n=self.n_heads) # h = head_size
         k = rearrange(k,'b t (h n) -> b n t h',n=self.n_heads)
         v = rearrange(v,'b t (h n) -> b n t h',n=self.n_heads)
         
-        # qk_t = einsum(q,k,'b n t1 h, b n t2 h -> b n t1 t2') * self.scale
+        # we know that qk_t = q x k_t, where q=b x tx head_dim, k_t= b x head_size x t
+        # qk_t = batch_size x num_heads x seq_len x seq_len
         qk_t = (q@k.transpose(-2,-1)) * self.scale
         
         weights = self.attention_dropout(qk_t)
         
-        attention = weights @ v # batch x n_heads x seq_len x head_size
-        attention = rearrange(attention,'b n t h -> b t (n h)') # batch x n_heads x seq_len x embed_dim
+        attention = weights @ v # batch x num_heads x seq_len x head_size
+        attention = rearrange(attention,'b n t h -> b t (n h)') # batch x seq_len x embed_dim
         
+        # batch x seq_len x embed_dim
         out = self.proj(attention)
         out = self.residual_dropout(out)
         
@@ -91,8 +96,8 @@ class TransformerBlock(nn.Module):
         )
         
     def forward(self,x):
-        x = x+self.attn(self.ln1(x))
-        x = x+self.mlp(self.ln2(x))
+        x = x+self.attn(self.ln1(x)) # batch x seq_len x embed_dim
+        x = x+self.mlp(self.ln2(x)) # batch x seq_len x embed_dim
         return x
     
 
@@ -136,18 +141,20 @@ class ViT(nn.Module):
         
     def forward(self,x):
         
+        # seq_len = height * weight
+        # patch_dim = patch_size ** 2 * num_channels
         x = rearrange(x,'b c (h p1) (w p2) -> b (h w) (p1 p2 c)',
                       p1=self.config.patch_size,
                       p2=self.config.patch_size
                      )
-        x = self.patch_embedding(x)
-        x += self.pos_embedding(x)
+        x = self.patch_embedding(x) # batch x seq_len x embed_dim
+        x += self.pos_embedding(x) # batch x seq_len x embed_dim
         
         for block in self.transformer_blocks:
-            x = block(x)
+            x = block(x) # batch x seq_len x embed_dim
             
-        x = x.mean(dim=1)
-        x = self.head(x)
+        x = x.mean(dim=1) # batch x embed_dim
+        x = self.head(x) # batch x num_classes
         
         return x
         

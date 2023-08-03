@@ -11,7 +11,7 @@ _* if I get necessary compute_
 - simple Vision Transformer
   - for process, check [building_ViT.ipynb](./ViT/building_ViT.ipynb)
   - model [implementation](./ViT/vit.py)
-  - not `[class]` token, used mean pooling.
+  - used `mean` pooling instead of `[class]` token
 
 ### Requirements
 ```
