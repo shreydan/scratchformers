@@ -16,7 +16,15 @@ _* if I get necessary compute_
   - for process, check [buildingGPT2.ipynb](./GPT2/buildingGPT2.ipynb)
   - model [implementation](./GPT2/gpt2.py)
   - built in such a way that it supports loading pretrained openAI/huggingface weights [gpt2-load-via-hf.ipynb](./GPT2/gpt2-load-via-hf.ipynb)
-  - TODO: emulate hf text-generation to get good outputs
+  - TODON'T: emulate hf text-generation to get good outputs
+- **OpenAI CLIP**
+  - implemented `ViT-B/32` variant
+  - for process, check [building_clip.ipynb](./OpenAI-CLIP/building_clip.ipynb)
+  - inference req: install clip for tokenization and preprocessing: `pip install git+https://github.com/openai/CLIP.git`
+  - model [implementation](./OpenAI-CLIP/model.py)
+  - zero-shot inference [code](./OpenAI-CLIP/zeroshot.py)
+  - built in such a way that it supports loading pretrained openAI weights
+  - TODON'T: inference is not working
 
 ### Requirements
 ```
