@@ -23,9 +23,8 @@ _* if I get necessary compute_
   - inference req: install clip for tokenization and preprocessing: `pip install git+https://github.com/openai/CLIP.git`
   - model [implementation](./OpenAI-CLIP/model.py)
   - zero-shot inference [code](./OpenAI-CLIP/zeroshot.py)
-  - built in such a way that it supports loading pretrained openAI weights
-  - TODON'T: inference is not working
-
+  - built in such a way that it supports loading pretrained openAI weights and IT WORKS!!!
+  
 ### Requirements
 ```
 torch

@@ -38,7 +38,7 @@ class MultiheadAttention(nn.Module):
         if mask is not None:
             mask = mask.to(dtype=attn.dtype,device=attn.device)
             attn = attn.masked_fill(mask==0,float('-inf'))
-            attn = F.softmax(attn,dim=-1)
+        attn = F.softmax(attn,dim=-1)
         
         # attn: batch x num_heads x seq x head_size
         attn = attn @ v
