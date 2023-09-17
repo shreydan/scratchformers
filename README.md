@@ -1,8 +1,8 @@
 # ScratchFormers
+### implementing transformers from scratch.
 
-implementing transformers from scratch (and training them)*!
+> Attention is all you need.
 
-_* if I get necessary compute_
 
 ##### einops [starter](einops.ipynb)
 
@@ -24,6 +24,11 @@ _* if I get necessary compute_
   - model [implementation](./OpenAI-CLIP/model.py)
   - zero-shot inference [code](./OpenAI-CLIP/zeroshot.py)
   - built in such a way that it supports loading pretrained openAI weights and IT WORKS!!!
+- **Encoder Decoder Transformer**
+  - for process, check [building_encoder-decoder.ipynb](./encoder-decoder/building_encoder-decoder.ipynb)
+  - model [implementation](./encoder-decoder/model.py)
+  - src_mask for encoder is optional but is nice to have since it is used to mask out the pad tokens so attention is not considered for those tokens.
+  - used learned embeddings for position instead of sin/cos as per the OG
   
 ### Requirements
 ```
