@@ -147,13 +147,13 @@ class Transformer(nn.Module):
         
         src_mask = self.create_src_mask(src)
         
-        src = self.enc_embedding(src)
-        tgt = self.dec_embedding(tgt)
+        enc_out = self.enc_embedding(src)
+        dec_out = self.dec_embedding(tgt)
         
         
         for i in range(self.depth):
-            enc_out = self.encoders[i](src,mask=src_mask)
-            dec_out = self.decoders[i](tgt,enc_out,src_mask=src_mask,tgt_mask=self.tgt_mask)
+            enc_out = self.encoders[i](enc_out,mask=src_mask)
+            dec_out = self.decoders[i](dec_out,enc_out,src_mask=src_mask,tgt_mask=self.tgt_mask)
             
         return dec_out
     
