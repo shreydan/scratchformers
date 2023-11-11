@@ -29,7 +29,18 @@
   - model [implementation](./encoder-decoder/model.py)
   - src_mask for encoder is optional but is nice to have since it is used to mask out the pad tokens so attention is not considered for those tokens.
   - used learned embeddings for position instead of sin/cos as per the OG
-  
+- **ViT MAE**
+  - Paper: [Masked autoencoders are scalable vision learners](https://arxiv.org/abs/2111.06377)  
+  - model [implementation](./vitmae/model.py)
+  - for process, check: [building-vitmae.ipynb](./vitmae/building-vitmae.ipynb)
+  - Quite reliant on the original code released by authors.
+  - Only simplification: No [CLS] token so used mean pooling
+  - The model can be trained 2 ways:
+    - For pretraining: the decoder can be thrown away and the encoder can be used for downstream tasks
+    - For visualization: can be used to reconstruct masked images.
+  - I trained a smaller model for reconstruction visualization: [ViTMAE on Animals Dataset](./vitmae/animals-vitmae.ipynb)
+
+
 ### Requirements
 ```
 torch
