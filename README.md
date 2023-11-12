@@ -18,7 +18,6 @@
   - for process, check [buildingGPT2.ipynb](./GPT2/buildingGPT2.ipynb)
   - model [implementation](./GPT2/gpt2.py)
   - built in such a way that it supports loading pretrained openAI/huggingface weights [gpt2-load-via-hf.ipynb](./GPT2/gpt2-load-via-hf.ipynb)
-  - TODON'T: emulate hf text-generation to get good outputs
 
 
 - **OpenAI CLIP**
@@ -34,7 +33,11 @@
   - for process, check [building_encoder-decoder.ipynb](./encoder-decoder/building_encoder-decoder.ipynb)
   - model [implementation](./encoder-decoder/model.py)
   - src_mask for encoder is optional but is nice to have since it is used to mask out the pad tokens so attention is not considered for those tokens.
-  - used learned embeddings for position instead of sin/cos as per the OG
+  - used learned embeddings for position instead of sin/cos as per the OG.
+  - I trained a model for multilingual machine translation.
+    - Translates english to hindi and telugu.
+    - change: single encoder & decoder embedding layer since I used a single tokenizer.
+    - for the code and results check: [shreydan/multilingual-translation](https://github.com/shreydan/multilingual-translation)
 
 
 - **BERT - MLM**
@@ -58,11 +61,12 @@
 
 ### Requirements
 ```
+einops
 torch
 torchvision
 numpy
 matplotlib
-einops
+pandas
 ```
 
 Here's my puppy's picture:
