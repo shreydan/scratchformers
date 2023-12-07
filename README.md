@@ -9,7 +9,7 @@
 - [attentions](./attentions.ipynb)
   - multi-head causal attention
   - multi-head cross attention
-  - multi-head grouped query attention
+  - multi-head grouped query attention (torch + einops)
 
 ## Models
 
