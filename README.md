@@ -3,8 +3,13 @@
 
 > Attention is all you need.
 
+### Starters
 
-##### einops [starter](einops.ipynb)
+- [einops](./einops.ipynb)
+- [attentions](./attentions.ipynb)
+  - multi-head causal attention
+  - multi-head cross attention
+  - multi-head grouped query attention
 
 ## Models
 
