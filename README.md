@@ -76,5 +76,15 @@ matplotlib
 pandas
 ```
 
+---
+
+
 Here's my puppy's picture:
 ![sumo](sumo.jpg)
+
+---
+
+```
+God is our refuge and strength, a very present help in trouble.
+Psalm 46:1
+```
