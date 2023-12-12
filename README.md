@@ -10,6 +10,8 @@
   - multi-head causal attention
   - multi-head cross attention
   - multi-head grouped query attention (torch + einops)
+- [positional embeddings](./positional-embeddings.ipynb)
+  - rotary positional embeddings (RoPE)
 
 ## Models
 
