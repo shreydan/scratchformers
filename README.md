@@ -12,6 +12,9 @@
   - multi-head grouped query attention (torch + einops)
 - [positional embeddings](./positional-embeddings.ipynb)
   - rotary positional embeddings (RoPE)
+- [Low-Rank Adaptation (LoRA)](./LoRA/)
+  - implementing LoRA based on this wonderful [tutorial by Sebastian Raschka](https://lightning.ai/lightning-ai/studios/code-lora-from-scratch?view=public&section=all)
+  - finetuning LoRA adapted `deberta-v3-base` on IMDb dataset
 
 ## Models
 
