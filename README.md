@@ -10,7 +10,7 @@
   - multi-head causal attention
   - multi-head cross attention
   - multi-head grouped query attention (torch + einops)
-- **positional embeddings**
+- positional embeddings 
   - [rotary positional embeddings (RoPE)](./_modules/rope.ipynb)
 - [Low-Rank Adaptation (LoRA)](./_modules/LoRA/)
   - implementing LoRA based on this wonderful [tutorial by Sebastian Raschka](https://lightning.ai/lightning-ai/studios/code-lora-from-scratch?view=public&section=all)
