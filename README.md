@@ -76,6 +76,11 @@
     - For visualization: can be used to reconstruct masked images.
   - I trained a smaller model for reconstruction visualization: [ViTMAE on Animals Dataset](./vitmae/animals-vitmae.ipynb)
 
+- **UNETR**
+  - 3D segmentation model for medical domain
+  - Transformer based architecture, more [info](https://paperswithcode.com/method/unetr)
+  - process: [building_unetr](./UNETR/building_unetr.ipynb) 
+
 
 ### Requirements
 ```
