@@ -18,6 +18,12 @@
 
 ## Models
 
+- **LlaMA**
+  - for process, check [building_llama_complete.ipynb](./LLaMA/building_llama_complete.ipynb)
+  - model [implementation](./LLaMA/llama.py)
+  - inference (used [SmolLM2-135M-Instruct](https://huggingface.co/HuggingFaceTB/SmolLM2-135M-Instruct) which is based on LlaMA architecture but super small) [code](./LLaMA/llama-inference.ipynb) [kaggle](https://www.kaggle.com/code/shreydan/llama/)
+  - super cool resource: [LLMs From Scratch by Sebastian Raschka](https://github.com/rasbt/LLMs-from-scratch)
+
 - **simple Vision Transformer**
   - for process, check [building_ViT.ipynb](./ViT/building_ViT.ipynb)
   - model [implementation](./ViT/vit.py)
