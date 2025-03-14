@@ -5,16 +5,23 @@
 
 ## Modules
 
-- [einops starter](./_modules/einops.ipynb)
-- [attentions](./_modules/attentions.ipynb)
+- **[einops starter](./_modules/einops.ipynb)**
+  
+- **[attentions](./_modules/attentions.ipynb)**
   - multi-head causal attention
   - multi-head cross attention
   - multi-head grouped query attention (torch + einops)
-- positional embeddings 
+  
+- **positional embeddings **
   - [rotary positional embeddings (RoPE)](./_modules/rope.ipynb)
-- [Low-Rank Adaptation (LoRA)](./_modules/LoRA/)
+  
+- **[Low-Rank Adaptation (LoRA)](./_modules/LoRA/)**
   - implementing LoRA based on this wonderful [tutorial by Sebastian Raschka](https://lightning.ai/lightning-ai/studios/code-lora-from-scratch?view=public&section=all)
   - finetuning LoRA adapted `deberta-v3-base` on IMDb dataset
+
+- **[KV Cache](./_modules/KV-Cache/)**
+  - implemented KV Cache that supports RoPE
+  - Works and verified with Llama (RoPE + GQA) 
 
 ## Models
 
