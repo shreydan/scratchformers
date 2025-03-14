@@ -12,7 +12,7 @@
   - multi-head cross attention
   - multi-head grouped query attention (torch + einops)
   
-- **positional embeddings **
+- **positional embeddings**
   - [rotary positional embeddings (RoPE)](./_modules/rope.ipynb)
   
 - **[Low-Rank Adaptation (LoRA)](./_modules/LoRA/)**
@@ -30,6 +30,7 @@
   - model [implementation](./LLaMA/llama.py)
   - inference (used [SmolLM2-135M-Instruct](https://huggingface.co/HuggingFaceTB/SmolLM2-135M-Instruct) which is based on LlaMA architecture but super small) [code](./LLaMA/llama-inference.ipynb) [kaggle](https://www.kaggle.com/code/shreydan/llama/)
   - super cool resource: [LLMs From Scratch by Sebastian Raschka](https://github.com/rasbt/LLMs-from-scratch)
+  - added KV Caching support: [llama_with_kv_caching.ipynb](./_modules/KV-Cache/llama_with_kv_caching.ipynb)
 
 - **simple Vision Transformer**
   - for process, check [building_ViT.ipynb](./ViT/building_ViT.ipynb)
